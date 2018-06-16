@@ -57,6 +57,20 @@ test('format', function (assert) {
     for (i = 0; i < a.length; i++) {
         assert.equal(b.format(a[i][0]), a[i][1], a[i][0] + ' ---> ' + a[i][1]);
     }
+
+    a = [
+            ['LL',   '1er février 2010'],
+            ['LLL',  '1er février 2010 15:25'],
+            ['LLLL', 'lundi 1er février 2010 15:25'],
+            ['ll',   '1er févr. 2010'],
+            ['lll',  '1er févr. 2010 15:25'],
+            ['llll', 'lun. 1er févr. 2010 15:25']
+        ];
+    b = moment(new Date(2010, 1, 1, 15, 25, 50, 125));
+
+    for (i = 0; i < a.length; i++) {
+        assert.equal(b.format(a[i][0]), a[i][1], a[i][0] + ' ---> ' + a[i][1]);
+    }
 });
 
 test('format ordinal', function (assert) {
